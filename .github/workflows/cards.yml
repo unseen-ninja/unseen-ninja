@@ -1,0 +1,64 @@
+name: Update README cards
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs once daily at midnight
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Generate Catppuccin card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=catppuccin&repo=catppuccin&title_color=FFFFFF&text_color=FAFAFC&icon_color=FAFAFC&bg_color=8819EC&hide_border=true
+          path: assets/images/pin-catppuccin.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate dark Palette card 
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=unseen-ninja&repo=palette&title_color=FAFAFC&text_color=919199&icon_color=EA33ED&bg_color=191923&hide_border=true
+          path: assets/images/pin-palette-dark.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate light Palette card 
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=unseen-ninja&repo=palette&title_color=191923&text_color=616169&icon_color=EA33ED&bg_color=EEEEF5&hide_border=true
+          path: assets/images/pin-palette-light.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate dark Website card 
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=unseen-ninja&repo=website&title_color=FAFAFC&text_color=919199&icon_color=F5F451&bg_color=191923&hide_border=true
+          path: assets/images/pin-website-dark.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate light Website card 
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=unseen-ninja&repo=website&title_color=191923&text_color=616169&icon_color=8819EC&bg_color=EEEEF5&hide_border=true
+          path: assets/images/pin-website-light.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/*.svg
+          git commit -m "Update README cards" || exit 0
+          git push
