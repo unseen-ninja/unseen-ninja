@@ -1,15 +1,8 @@
 &nbsp;
 
 <h3 align="center">
-  <img src="assets/images/header.svg" width="350" alt="unseen;ninja"/>
+  <img src="assets/images/about.svg" width="80%" alt="Hi, I’m Lemon! ✌️ Helping the internet stay usable, beautiful, and slightly less on fire."/>
 </h3>
-
-&nbsp;
-
-<p align="center">
-  Hi, I’m Lemon! 👋<br>
-  Helping the internet stay usable, beautiful, and slightly less on fire.
-</p>
 
 &nbsp;
 
